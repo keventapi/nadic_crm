@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="csrf_token" content="{{ csrf_token }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+    </head>
+    <body>
+        <ul>
+            {% for itens in products %}
+            <li>{{itens.product_name}}</li>
+            {% endfor %}
+        </ul>
+        <script src=" {% static "js/index_script.js" %}" async defer></script>
+    </body>
+</html>

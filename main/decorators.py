@@ -1,0 +1,10 @@
+from functools import wraps
+from django.shortcuts import redirect
+
+def loged_out_required(function):
+    @wraps(function)
+    def wrapper(request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('index')
+        return function(request, *args, **kwargs)
+    return wrapper

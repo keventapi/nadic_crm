@@ -10,8 +10,9 @@ class ProductType(models.Model):
 
 class Product(models.Model):
     product_name = models.CharField(max_length=200)
-    product_image = models.ImageField(null=True)
+    product_image = models.ImageField(upload_to='imgs/')
     product_price = models.IntegerField()
+    product_stock = models.IntegerField()
     product_description = models.TextField()
     product_type = models.ManyToManyField(ProductType)    
     def __str__(self):

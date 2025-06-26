@@ -13,7 +13,7 @@
     <body>
         <ul>
             {% for itens in products %}
-            <li>{{itens.product_name}}</li>
+            <li><a href="/product_view/{{ itens.id }}">{{itens.product_name}}</a></li>
             {% endfor %}
         </ul>
         <script src=" {% static "js/index_script.js" %}" async defer></script>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -6,6 +6,7 @@ from .models import Product
 from .forms import AuthForm, SignupForm, ProductForm
 from . import auth
 from .decorators import loged_out_required
+
 
 # Create your views here.
 @login_required
@@ -26,6 +27,17 @@ def add_product(request):
 
     context = {'form': form}
     return render(request, 'user_product_manager.html', context)
+
+@login_required
+def view_product(response, product_id):
+    product_info = get_list_or_404(Product, id=product_id)[0]
+    product_context = {'title': product_info.product_name,
+                       'image': product_info.product_image,
+                       'price': product_info.product_price,
+                       'description': product_info.product_description,
+                       'type': product_info.product_type}
+    print(product_context)
+    return render(response, 'product_view.html', {'product': product_context})
 
 @loged_out_required
 def login_page(response):

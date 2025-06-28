@@ -11,13 +11,8 @@
         <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
     </head>
     <body>
-    <form method="GET">
-        <input name="search" id="search">
-        <input type="submit" value="submit">
-        <div id="suggestionBox"></div>
-    </form>
         <ul>
-            {% for itens in products %}
+            {% for itens in product %}
             <li><a href="/product_view/{{ itens.id }}">
             <div>
             <img src="{{itens.product_image.url}}">
@@ -27,6 +22,6 @@
             </li>
             {% endfor %}
         </ul>
-        <script src=" {% static "js/auto_complete.js" %}" async defer></script>
+        <script src=" {% static "js/index_script.js" %}" async defer></script>
     </body>
 </html>

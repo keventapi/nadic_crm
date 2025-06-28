@@ -8,12 +8,27 @@
 </head>
 <body>
     <div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <div>
+        <form method="POST">
+            {% csrf_token %}
+            {% if owner %}
+                <a href="../product_edit/{{product.id}}"> edit </a>
+            {% endif %}
             <img src="{{ product.image.url }}">
             <h2>{{product.title}}</h2>
             <span>{{product.price}}</span>
             <div>{{product.description}}</div>
-
+            {{form.as_p}}
+            <input type="submit" name="action" value="comprar" onclick="return confirm('confirma a compra?');">
+        </form>
 
         </div>
     </div>

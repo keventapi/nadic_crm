@@ -16,10 +16,11 @@
         <input type="submit" value="submit">
         <div id="suggestionBox"></div>
     </form>
-        <a href="profile/{{user}}"> profile </a>
         <ul>
+            <a href="/product_user"> adicionar producto </a> <br>
+            <p> {{faturamento}} </p>
             {% for itens in products %}
-            <li><a href="/product_view/{{ itens.id }}">
+            <li><a href="/product_edit/{{ itens.id }}">
             <div>
             <img src="{{itens.product_image.url}}">
             <span>{{itens.product_name}}</span>

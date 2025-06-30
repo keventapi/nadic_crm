@@ -5,14 +5,16 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
-        <meta name="description" content="">
-        <meta name="csrf_token" content="{{ csrf_token }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
     </head>
     <body>
-        <p>faturamento atual da emprese: {{faturamento_empresa}}R$</p<
-        <p>capital transicionado pelo sistema: {{faturamento_total}}R$</p<
-        <script src=" {% static "js/index_script.js" %}" async defer></script>
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type='submit' id='submit' value='submit'> 
+        </div>
+        <script src=" {% static "js/login_script.js" %}" async defer></script>
     </body>
 </html>

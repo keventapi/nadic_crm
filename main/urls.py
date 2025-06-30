@@ -11,4 +11,8 @@ urlpatterns = [
     path('faturamento', views.faturamento, name="faturamento"),
     path('profile/<int:user_id>', views.profile, name="profile"),
     path('auto_complete', views.auto_complete, name='auto_complete'),
+    path('create_staff_account', views.create_staff_account, name="staff_account"),
+    path('cart', views.view_cart, name='cart'),
+    path('dashboard', views.seller_dashboard, name='seller_dashboard'),
+    path('comission', views.comission_update, name='comission_update')
 ]

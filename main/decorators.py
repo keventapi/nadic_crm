@@ -1,6 +1,6 @@
 from functools import wraps
 from django.shortcuts import redirect
-
+from .models import Comissions
 
 def loged_out_required(function):
     @wraps(function)

@@ -1,29 +1,38 @@
-from django.shortcuts import get_object_or_404
-from .models import ProductType
+from .models import Sales, Comissions
 
-def get_formated_form_response(response, keys, values):
-    db_update = []
-    for i in range(len(keys)):
-        if keys[i] == "type":
-            type_id = response.POST.get(f"product_{keys[i]}")
-            value = get_object_or_404(ProductType, id=int(type_id))      
-        elif keys[i] == "image":
-            value = response.FILES.get(f"product_{keys[i]}")
-        else:
-            value = response.POST.get(f"product_{keys[i]}")
+def calcular_faturamento(vendas):
+    faturamento_total = 0
+    faturamento_empresa = 0
+    for i in vendas:
+        faturamento_total += i.total_product_sale
+        faturamento_empresa = i.company_net_earning
+    return faturamento_total, faturamento_empresa
 
-        if value is None:
-            if keys[i] == "type":
-                value = get_object_or_404(ProductType, id=int(values[i]))
-            else:
-                value = values[i]
+def get_latest_comission():
+    latest_comissions = Comissions.objects.order_by('-id').first()
+    if latest_comissions is None:
+        latest_comissions = Comissions(owner_share = 0.9,
+                                      company_commission = 0.1)
+        latest_comissions.save()
+    return latest_comissions
 
-        db_update.append(value)
+def handle_sales_from_cart(products_list):
+    latest_comissions = get_latest_comission()
+    for cartitem in products_list:
+        sale = Sales(product = cartitem.product,
+                 quantity = cartitem.quantity,
+                 price_at_sale = cartitem.product.product_price,
+                 comissions = latest_comissions,
+                 owner_share_at_sale = latest_comissions.owner_share,
+                 company_commission_at_sale = latest_comissions.company_commission)
+        sale.save()
         
-    return format_to_dictionary(keys, db_update)
-
-def format_to_dictionary(keys, db_update):
-    db_dict = {}
-    for index in range(len(keys)):
-        db_dict[f'product_{keys[index]}'] = db_update[index]
-    return db_dict    
+def handle_unique_sells(product, quantity):
+    latest_comissions = get_latest_comission()
+    sale = Sales(product = product,
+                 quantity = quantity,
+                 price_at_sale = product.product_price,
+                 comissions = latest_comissions,
+                 owner_share_at_sale = latest_comissions.owner_share,
+                 company_commission_at_sale = latest_comissions.company_commission)
+    sale.save()

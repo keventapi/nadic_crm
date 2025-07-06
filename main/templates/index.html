@@ -16,18 +16,40 @@
         <input type="submit" value="submit">
         <div id="suggestionBox"></div>
     </form>
-        <a href="profile/{{user}}"> profile </a>
-        <ul>
-            {% for itens in products %}
-            <li><a href="/product_view/{{ itens.id }}">
-            <div>
-            <img src="{{itens.product_image.url}}">
-            <span>{{itens.product_name}}</span>
-            </a>
-            </div>
-            </li>
-            {% endfor %}
-        </ul>
+        <a href="profile/{{user.id}}"> profile </a>
+        <h1>Lista de Produtos</h1>
+
+    <ul>
+    {% for product in products %}
+        <li> <a href="/product_view/{{product.id}}"> <img src="{{product.product_image.url}}">{{ product.product_name }} - R$ {{ product.product_price }}</a></li>
+    {% empty %}
+        <li>Não há produtos disponíveis.</li>
+    {% endfor %}
+    </ul>
+
+    <div class="pagination">
+    {% if is_paginated %}
+        <span>
+        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        {% if num == page_obj.number %}
+            <strong>{{ num }}</strong>
+        {% else %}
+            <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
+        {% endif %}
+    {% endif %}
+    </div>
         <script src=" {% static "js/auto_complete.js" %}" async defer></script>
     </body>
 </html>

@@ -6,11 +6,16 @@ from decimal import Decimal, ROUND_DOWN
 
 
 class ProductType(models.Model):
-    type_Name = models.CharField(max_length=60)
+    type_name = models.CharField(max_length=60)
     type_category = models.TextField()
     
+    def save(self, *args, **kwargs):
+        self.type_name = self.type_name.lower()
+        self.type_category = self.type_category.lower()
+        
+        super().save(*args, **kwargs)
     def __str__(self):
-        return self.type_Name
+        return self.type_name
 
 class Product(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -27,6 +32,9 @@ class Product(models.Model):
             self.product_visibility = False
         else:
             self.product_visibility = True
+        self.product_name = self.product_name.lower()
+        self.product_description = self.product_description.lower()
+        
         super().save(*args, **kwargs) 
            
     def update_data(self, **kwargs):

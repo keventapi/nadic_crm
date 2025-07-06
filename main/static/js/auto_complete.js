@@ -1,5 +1,6 @@
 search_element = document.getElementById('search')
 suggestionBox = document.getElementById('suggestionBox')
+//implementar of empty style = hidden
 search_element.addEventListener('input', function(event){
     const valor = event.target.value
     const csfr_token = document.querySelector('meta[name="csrf_token"]').getAttribute('content')

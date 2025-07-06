@@ -11,17 +11,33 @@
         <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
     </head>
     <body>
+    <div id="top_banner">
+    <div class="banner_item">
+        <a href="/" id="home">nadicCRM</a>
+    </div>
+    <div class="banner_separator"></div>
+    <div class="banner_item">
+        <a href="{% url 'profile' user.id %}">
+            <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
+        </a>
+    </div>
+    <div class="banner_item">
+        <a href="/cart">
+        <img src="{% static 'imgs/cart.png' %}">
+        </a>
+    </div>
+</div>
+
     <form method="GET">
         <input name="search" id="search">
-        <input type="submit" value="submit">
-        <div id="suggestionBox"></div>
+        <input type="submit" value="search">
     </form>
-        <a href="profile/{{user.id}}"> profile </a>
+    <div id="suggestionBox"></div>
         <h1>Lista de Produtos</h1>
 
     <ul>
     {% for product in products %}
-        <li> <a href="/product_view/{{product.id}}"> <img src="{{product.product_image.url}}">{{ product.product_name }} - R$ {{ product.product_price }}</a></li>
+        <li> <a href="/product_view/{{product.id}}" class="product_item"> <img src="{{product.product_image.url}}"> <span>{{ product.product_name }}</span> <span>R$ {{ product.product_price }} </span> </a></li>
     {% empty %}
         <li>Não há produtos disponíveis.</li>
     {% endfor %}
@@ -29,25 +45,13 @@
 
     <div class="pagination">
     {% if is_paginated %}
-        <span>
-        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
-        </span>
-
-        {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-        {% endif %}
-
         {% for num in page_obj.paginator.page_range %}
         {% if num == page_obj.number %}
-            <strong>{{ num }}</strong>
+            <strong class="paginator">{{ num }}</strong>
         {% else %}
-            <a href="?page={{ num }}">{{ num }}</a>
+            <a href="?page={{ num }}" class="paginator">{{ num }}</a>
         {% endif %}
         {% endfor %}
-
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
-        {% endif %}
     {% endif %}
     </div>
         <script src=" {% static "js/auto_complete.js" %}" async defer></script>

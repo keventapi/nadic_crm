@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 import json
 
 #adicionar um trhottle para o evento de autocomplete
-
+#add blacklist, add athomic pra save entre duas tabelas
 # Create your views here.
 
 

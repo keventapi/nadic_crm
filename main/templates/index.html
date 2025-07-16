@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="csrf_token" content="{{ csrf_token }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+    </head>
+    <body>
+
+        
+    <div id="top_banner">
+    <div class="banner_item">
+        <a href="/" id="home">nadicCRM</a>
+    </div>
+    <div class="banner_separator"></div>
+    <div class="banner_item">
+        <a href="{% url 'profile' user.id %}">
+            <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
+        </a>
+    </div>
+    <div class="banner_item">
+        <a href="/cart">
+        <img src="{% static 'imgs/cart.png' %}">
+        </a>
+    </div>
+</div>
+
+    <form method="GET">
+        <input name="search" id="search">
+        <input type="submit" value="search">
+    </form>
+    <div id="suggestionBox"></div>
+        <h1>Lista de Produtos</h1>
+
+    <ul>
+    {% for product in products %}
+        <li> <a href="/product_view/{{product.id}}" class="product_item"> <img src="{{product.product_image.url}}"> <span>{{ product.product_name }}</span> <span>R$ {{ product.product_price }} </span> </a></li>
+    {% empty %}
+        <li>Não há produtos disponíveis.</li>
+    {% endfor %}
+    </ul>
+
+
+    <!-- paginator !-->
+    <div class="pagination">
+    {% if is_paginated %}
+        {% for num in page_obj.paginator.page_range %}
+        {% if num == page_obj.number %}
+            <strong class="paginator">{{ num }}</strong>
+        {% else %}
+            <a href="?page={{ num }}" class="paginator">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    </div>
+        <script src=" {% static "js/auto_complete.js" %}" async defer></script>
+    </body>
+</html>

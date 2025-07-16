@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="csrf_token" content="{{ csrf_token }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+    </head>
+    <body>
+        <div id="top_banner">
+            <div class="banner_item">
+                <a href="/" id="home">nadicCRM</a>
+            </div>
+            <div class="banner_separator"></div>
+            <div class="banner_item">
+                <a href="{% url 'profile' user.id %}">
+                    <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
+                </a>
+            </div>
+            <div class="banner_item">
+                <a href="/cart">
+                <img src="{% static 'imgs/cart.png' %}">
+                </a>
+            </div>
+        </div>
+
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" name="action" value="submit">
+            <button type="submit" name="action" value="delete" onclick="return confirm('Confirma exclusão?');">Excluir</button>
+            <button type="submit" name="action" value="cancel">cancelar</button>
+        </form>
+        <script src=" {% static "js/index_script.js" %}" async defer></script>
+    </body>
+</html>

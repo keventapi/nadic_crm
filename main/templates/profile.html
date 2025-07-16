@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="csrf_token" content="{{ csrf_token }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+    </head>
+    <body>
+        <div id="top_banner">
+            <div class="banner_item">
+                <a href="/" id="home">nadicCRM</a>
+            </div>
+            <div class="banner_separator"></div>
+            <div class="banner_item">
+                <a href="../dashboard">
+                    <img src="{% static 'imgs/dashboard.png' %}" alt="Perfil">
+                </a>
+            </div>
+            <div class="banner_item">
+                <a href="/cart">
+                <img src="{% static 'imgs/cart.png' %}">
+                </a>
+            </div>
+        </div>
+
+
+        <ul>
+            {% for itens in product %}
+            <li><a href="/product_view/{{ itens.id }}">
+            <div>
+            <img src="{{itens.product_image.url}}">
+            <span>{{itens.product_name}}</span>
+            </a>
+            </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="pagination">
+            {% if is_paginated %}
+                {% for num in page_obj.paginator.page_range %}
+                {% if num == page_obj.number %}
+                    <strong class="paginator">{{ num }}</strong>
+                {% else %}
+                    <a href="?page={{ num }}" class="paginator">{{ num }}</a>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+            </div>
+
+        <script src=" {% static "js/index_script.js" %}" async defer></script>
+    </body>
+</html>

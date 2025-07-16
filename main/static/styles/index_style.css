@@ -1,0 +1,112 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+form{
+    display: flex;
+    text-align: center;
+    width: 80%;
+    height: 5%;
+}
+#search{
+    width: 100%;
+}
+
+h1{
+    text-align: center;
+}
+#home{
+    width: 100%;
+    height: 100%;
+    
+    text-decoration: None;
+    font-size: 10vh;
+}
+
+#suggestionBox {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+  font-size: 14px;
+}
+
+#suggestionBox div {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+#suggestionBox div:hover {
+  background-color: #f0f0f0;
+}
+
+#top_banner{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    background-color: orangered;
+}
+.banner_item{
+    display: flex;
+    width: 20%;
+    height: 100%;
+}
+.banner_separator{
+    display: flex;
+    width: 60%;
+    height: 100%;
+}
+.banner_item img{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 50%;
+
+}
+
+
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+li{
+    width: 20%;
+    background-color: darkgray;
+    margin: 4px;
+    padding: 4px;
+}
+li img{
+width: 100%;
+}
+span{
+    display: block;
+    text-align: center;
+}
+.pagination{
+    display: flex;
+    text-align: center;
+    padding-left: 50%;
+    margin-left: 20px;
+}
+.paginator{
+    margin: 4px;
+    text-decoration: none;
+    background-color: rgb(93, 93, 93);
+    width: 50px;
+    color: black;
+}
+.pagination strong{
+    color: white;
+}

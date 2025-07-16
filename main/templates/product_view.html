@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="description" content="">
+    <meta name="csrf_token" content="{{ csrf_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+</head>
+<body>
+    <div id="top_banner">
+        <div class="banner_item">
+            <a href="/" id="home">nadicCRM</a>
+        </div>
+        <div class="banner_separator"></div>
+        <div class="banner_item">
+            <a href="{% url 'profile' user.id %}">
+                <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
+            </a>
+        </div>
+        <div class="banner_item">
+            <a href="/cart">
+            <img src="{% static 'imgs/cart.png' %}">
+            </a>
+        </div>
+    </div>
+
+
+
+    <div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div>
+        <form method="POST">
+            {% csrf_token %}
+            {% if owner %}
+                <a href="../product_edit/{{product.id}}"> edit </a>
+            {% endif %}
+            <img src="{{ product.product_image.url }}">
+            <h2>{{product.product_name}}</h2>
+            <span>{{product.product_price}}</span>
+            <div>{{product.product_description}}</div>
+            {{form.as_p}}
+            <input type="submit" name="action" value="comprar" onclick="return confirm('confirma a compra?');">
+            <input type="submit" name="action" value="carrinho" onclick="return confirm('deseja adicionar ao carrinho')">
+        </form>
+
+        </div>
+    </div>
+</body>
+</html>

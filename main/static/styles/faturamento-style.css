@@ -1,0 +1,88 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --card-bg-color: #fff;
+    --text-color: #333;
+    --price-color: #28a745;
+    --border-color: #e9ecef;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+/* Header/Banner */
+#top_banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg-color);
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banner_group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#top_banner a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#top_banner #home {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.banner_item img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Main Content */
+.main_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Cards de faturamento */
+.info_card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+}
+
+.info_card p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.info_card p strong {
+    font-size: 1.8rem;
+    color: var(--price-color);
+}
+
+.info_card p:first-child {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}

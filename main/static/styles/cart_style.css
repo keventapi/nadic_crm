@@ -1,0 +1,194 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --card-bg-color: #fff;
+    --text-color: #333;
+    --price-color: #28a745;
+    --border-color: #e9ecef;
+    --danger-color: #dc3545;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+/* Header/Banner - Mantém o mesmo estilo do index */
+#top_banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg-color);
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banner_item a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.cart-link{
+    background-color: #6c757d;
+}
+
+#top_banner #home {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.banner_item img {
+    width: 24px;
+    height: 24px;
+}
+
+.banner_separator {
+    width: 1px;
+    height: 30px;
+    background-color: var(--border-color);
+}
+
+.banner_group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Botão de Compra */
+form {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+input[type="submit"] {
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    background-color: var(--price-color);
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Lista de Itens do Carrinho */
+ul {
+    list-style: none;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+li {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+li:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+li a:first-of-type {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+li img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+li span {
+    font-size: 1rem;
+}
+
+li span:nth-of-type(1) { /* Nome do Produto */
+    font-weight: bold;
+}
+
+li span:nth-of-type(2) { /* Preço */
+    color: var(--price-color);
+    font-weight: bold;
+}
+
+li span:nth-of-type(3) { /* Quantidade */
+    color: var(--secondary-color);
+}
+
+/* Botão de Remover */
+a[href*="/deletefromcart"] {
+    display: block;
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border: 1px solid var(--danger-color);
+    color: var(--danger-color);
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap;
+}
+
+a[href*="/deletefromcart"]:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Paginator - Mantém o mesmo estilo do index */
+.pagination {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.paginator {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: background-color 0.3s;
+}
+
+.paginator:hover {
+    background-color: var(--border-color);
+}
+
+.pagination strong.paginator {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}

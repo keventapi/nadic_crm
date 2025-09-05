@@ -4,18 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ product.product_name }}</title>
     <meta name="description" content="">
     <meta name="csrf_token" content="{{ csrf_token }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
-</head>
+    <link rel="stylesheet" href="{% static "styles/product-view-style.css" %}"> </head>
 <body>
-    <div id="top_banner">
-        <div class="banner_item">
-            <a href="/" id="home">nadicCRM</a>
-        </div>
-        <div class="banner_separator"></div>
+       <div id="top_banner">
+    <div class="banner_item">
+        <a href="/" id="home">nadicCRM</a>
+    </div>
+    <div class="banner_group">
         <div class="banner_item">
             <a href="{% url 'profile' user.id %}">
                 <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
@@ -23,12 +21,11 @@
         </div>
         <div class="banner_item">
             <a href="/cart">
-            <img src="{% static 'imgs/cart.png' %}">
+                <img src="{% static 'imgs/cart.png' %}">
             </a>
         </div>
     </div>
-
-
+</div>
 
     <div>
         {% if messages %}
@@ -39,21 +36,26 @@
         </ul>
         {% endif %}
 
-        <div>
-        <form method="POST">
-            {% csrf_token %}
-            {% if owner %}
-                <a href="../product_edit/{{product.id}}"> edit </a>
-            {% endif %}
+        <div class="product-container">
             <img src="{{ product.product_image.url }}">
-            <h2>{{product.product_name}}</h2>
-            <span>{{product.product_price}}</span>
-            <div>{{product.product_description}}</div>
-            {{form.as_p}}
-            <input type="submit" name="action" value="comprar" onclick="return confirm('confirma a compra?');">
-            <input type="submit" name="action" value="carrinho" onclick="return confirm('deseja adicionar ao carrinho')">
-        </form>
-
+            
+            <div class="product-info">
+                {% if owner %}
+                <a href="../product_edit/{{product.id}}" class="edit-link">Editar Produto</a>
+                {% endif %}
+                <h2>{{product.product_name}}</h2>
+                <span>R$ {{product.product_price}}</span>
+                <p>{{product.product_description}}</p>
+                
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <div class="button-group">
+                        <input type="submit" name="action" value="comprar" onclick="return confirm('Confirma a compra?');">
+                        <input type="submit" name="action" value="carrinho" onclick="return confirm('Deseja adicionar ao carrinho?');">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>

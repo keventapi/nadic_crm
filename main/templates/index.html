@@ -17,21 +17,22 @@
     <div class="banner_item">
         <a href="/" id="home">nadicCRM</a>
     </div>
-    <div class="banner_separator"></div>
-    <div class="banner_item">
-        <a href="{% url 'profile' user.id %}">
-            <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
-        </a>
-    </div>
-    <div class="banner_item">
-        <a href="/cart">
-        <img src="{% static 'imgs/cart.png' %}">
-        </a>
+    <div class="banner_group">
+        <div class="banner_item">
+            <a href="{% url 'profile' user.id %}">
+                <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
+            </a>
+        </div>
+        <div class="banner_item">
+            <a href="/cart">
+                <img src="{% static 'imgs/cart.png' %}">
+            </a>
+        </div>
     </div>
 </div>
 
     <form method="GET">
-        <input name="search" id="search">
+        <input name="search" id="search" placeholder="Buscar produtos..." autocomplete="off">
         <input type="submit" value="search">
     </form>
     <div id="suggestionBox"></div>

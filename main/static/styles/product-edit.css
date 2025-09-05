@@ -1,0 +1,162 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --card-bg-color: #fff;
+    --text-color: #333;
+    --border-color: #e9ecef;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+/* Header/Banner - Mantém o mesmo estilo */
+/* Header/Banner - Estilo Corrigido */
+#top_banner {
+    display: flex;
+    justify-content: space-between; /* Alinha o nadicCRM para a esquerda e o grupo de ícones para a direita */
+    align-items: center;
+    background-color: var(--card-bg-color);
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banner_group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adiciona um espaçamento entre os ícones */
+}
+
+.banner_item a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#top_banner #home {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.banner_item img {
+    width: 24px;
+    height: 24px;
+}
+/* Formulário Principal */
+form {
+    background-color: var(--card-bg-color);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+    width: 90%;
+}
+
+/* Estilo para os parágrafos do formulário ({{form.as_p}}) */
+form p {
+    margin-bottom: 20px;
+}
+
+form p label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Estilo para campos de input e textarea */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    outline: none;
+}
+
+input[type="file"] {
+    padding: 12px 0;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+/* Container de Botões */
+.button-group {
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões à direita */
+    gap: 10px;
+    margin-top: 30px;
+}
+
+/* Estilo para o botão de Envio (submit) */
+input[type="submit"][name="action"][value="submit"] {
+    padding: 12px 24px;
+    border: none;
+    background-color: var(--success-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+input[type="submit"][name="action"][value="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Estilo para o botão de Excluir */
+button[name="action"][value="delete"] {
+    padding: 12px 24px;
+    border: none;
+    background-color: var(--danger-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button[name="action"][value="delete"]:hover {
+    background-color: #c82333;
+}
+
+/* Estilo para o botão de Cancelar */
+button[name="action"][value="cancel"] {
+    padding: 12px 24px;
+    border: 1px solid var(--secondary-color);
+    background-color: transparent;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.1s;
+}
+
+button[name="action"][value="cancel"]:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}

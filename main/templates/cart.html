@@ -8,25 +8,26 @@
         <meta name="description" content="">
         <meta name="csrf_token" content="{{ csrf_token }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+        <link rel="stylesheet" href="{% static "styles/cart_style.css" %}">
     </head>
     <body>
-        <div id="top_banner">
-            <div class="banner_item">
-                <a href="/" id="home">nadicCRM</a>
-            </div>
-            <div class="banner_separator"></div>
-            <div class="banner_item">
-                <a href="{% url 'profile' user.id %}">
-                    <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
-                </a>
-            </div>
-            <div class="banner_item">
-                <a href="/cart">
-                <img src="{% static 'imgs/cart.png' %}">
-                </a>
-            </div>
+   <div id="top_banner">
+    <div class="banner_item">
+        <a href="/" id="home">nadicCRM</a>
+    </div>
+    <div class="banner_group">
+        <div class="banner_item">
+            <a href="{% url 'profile' user.id %}">
+                <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
+            </a>
         </div>
+        <div class="banner_item">
+            <a href="/cart">
+                <img src="{% static 'imgs/cart.png' %}">
+            </a>
+        </div>
+    </div>
+</div>
 
 
 
@@ -34,20 +35,23 @@
             {% csrf_token %}
             <input type="submit" name="action" value="comprar tudo" onclick="return confirm('Confirma a compra de todos itens do carrinho?');">
         </form>
-        <ul>
-            {% for itens in cart_itens %}
-            <li><a href="/product_view/{{ itens.product.id }}">
-            <div>
-            <img src="{{itens.product.product_image.url}}"></br>
-            <span>{{itens.product.product_name}}</span></br>
-            <span>{{itens.product.product_price}}</span></br>
-            <span>{{itens.quantity}}</span></br>
-            </a>
-            <a href="/deletefromcart/{{ itens.product.id }}"> remove from cart </a>
+        <ul class="cart-items">
+    {% for itens in cart_itens %}
+    <li>
+        <a href="/product_view/{{ itens.product.id }}" class="cart-item-link">
+            <img src="{{itens.product.product_image.url}}">
+            <div class="product-info">
+                <span>{{itens.product.product_name}}</span>
+                <span>R$ {{itens.product.product_price}}</span>
+                <span>Quantidade: {{itens.quantity}}</span>
             </div>
-            </li>
-            {% endfor %}
-        </ul>
+        </a>
+        <a href="/deletefromcart/{{ itens.product.id }}" class="remove-btn">
+            Remover do Carrinho
+        </a>
+    </li>
+    {% endfor %}
+</ul>
 
 
         <div class="pagination">

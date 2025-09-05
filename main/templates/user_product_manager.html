@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Adicionar Produto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+        <link rel="stylesheet" href="{% static "styles/user-product-style.css" %}">
     </head>
     <body>
         <div id="top_banner">
@@ -28,7 +28,9 @@
         
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
+            <h1>Adicionar Produto</h1>
             {{form.as_p}}
-            <input type='submit' id='submit' value='submit'> 
+            <input type='submit' id='submit' value='submit'>
+        </form>
     </body>
 </html>

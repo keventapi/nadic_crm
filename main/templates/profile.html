@@ -4,39 +4,45 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Meu Perfil</title>
         <meta name="description" content="">
         <meta name="csrf_token" content="{{ csrf_token }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+        <link rel="stylesheet" href="{% static "styles/profile-style.css" %}">
     </head>
     <body>
         <div id="top_banner">
             <div class="banner_item">
                 <a href="/" id="home">nadicCRM</a>
             </div>
-            <div class="banner_separator"></div>
-            <div class="banner_item">
-                <a href="../dashboard">
-                    <img src="{% static 'imgs/dashboard.png' %}" alt="Perfil">
-                </a>
-            </div>
-            <div class="banner_item">
-                <a href="/cart">
-                <img src="{% static 'imgs/cart.png' %}">
-                </a>
+            <div class="banner_group">
+                <div class="banner_item">
+                    <a href="../dashboard">
+                        <img src="{% static 'imgs/dashboard.png' %}" alt="Dashboard">
+                    </a>
+                </div>
+                <div class="banner_item">
+                    <a href="../cart">
+                        <img src="{% static 'imgs/cart.png' %}">
+                    </a>
+                </div>
+                <div class="banner_item">
+                    <a href="../logout">
+                        <img src="{% static 'imgs/logout_icon.webp' %}">
+                    </a>
+                </div>
             </div>
         </div>
 
+        <h1>Meus Produtos</h1>
 
         <ul>
             {% for itens in product %}
-            <li><a href="/product_view/{{ itens.id }}">
-            <div>
-            <img src="{{itens.product_image.url}}">
-            <span>{{itens.product_name}}</span>
-            </a>
-            </div>
+            <li>
+                <a href="/product_view/{{ itens.id }}" class="product-item-link">
+                    <img src="{{itens.product_image.url}}">
+                    <span>{{itens.product_name}}</span>
+                </a>
             </li>
             {% endfor %}
         </ul>
@@ -51,8 +57,7 @@
                 {% endif %}
                 {% endfor %}
             {% endif %}
-            </div>
-
+        </div>
         <script src=" {% static "js/index_script.js" %}" async defer></script>
     </body>
 </html>

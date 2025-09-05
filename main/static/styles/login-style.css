@@ -1,0 +1,102 @@
+:root {
+    --primary-color: #007bff;
+    --background-color: #f8f9fa;
+    --card-bg-color: #fff;
+    --text-color: #333;
+    --border-color: #e9ecef;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: var(--card-bg-color);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center; /* Centraliza o conteúdo, incluindo o link */
+}
+
+/* Estilo para os parágrafos do formulário ({{form.as_p}}) */
+form p {
+    margin-bottom: 20px;
+}
+
+form p label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left; /* Alinha o texto da label para a esquerda */
+}
+
+/* Estilo para campos de input */
+input[type="text"],
+input[type="password"],
+input[type="email"] { /* Adicione outros tipos de input se necessário */
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+/* Estilo para o botão de envio */
+#submit {
+    padding: 12px 24px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 20px;
+}
+
+#submit:hover {
+    background-color: #0056b3;
+}
+
+#submit:active {
+    transform: scale(0.99);
+}
+
+/* Estilo para o link de cadastro */
+#signup {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#signup:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

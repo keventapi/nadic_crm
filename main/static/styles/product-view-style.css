@@ -1,0 +1,212 @@
+:root {
+    --primary-color: #007bff;
+    --background-color: #f8f9fa;
+    --card-bg-color: #fff;
+    --text-color: #333;
+    --price-color: #28a745;
+    --border-color: #e9ecef;
+    --success-color: #28a745;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+/* Header/Banner - Mantém o mesmo estilo */
+/* Header/Banner - Estilo Corrigido */
+#top_banner {
+    display: flex;
+    justify-content: space-between; /* Alinha o nadicCRM para a esquerda e o grupo de ícones para a direita */
+    align-items: center;
+    background-color: var(--card-bg-color);
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banner_group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adiciona um espaçamento entre os ícones */
+}
+
+.banner_item a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#top_banner #home {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.banner_item img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Mensagens de feedback */
+.messages {
+    list-style: none;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.messages .success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Container do Produto */
+.product-container {
+    background-color: var(--card-bg-color);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.product-container h2 {
+    font-size: 2rem;
+    margin: 20px 0 10px;
+    color: var(--text-color);
+}
+
+.product-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-container span {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--price-color);
+    margin: 10px 0;
+}
+
+.product-container div:nth-of-type(1) {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+    margin-top: 15px;
+    text-align: left;
+}
+
+/* Formulário e Botões */
+form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilo para o campo de quantidade ({{form.as_p}}) */
+form p {
+    width: 100%;
+    max-width: 200px;
+}
+
+form p label {
+    display: none; /* Esconde a label "Quantity" */
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+input[type="submit"] {
+    padding: 12px 24px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex-grow: 1; /* Faz os botões crescerem para preencher o espaço */
+}
+
+input[type="submit"][value="comprar"] {
+    background-color: var(--success-color);
+    color: white;
+}
+
+input[type="submit"][value="comprar"]:hover {
+    background-color: #218838;
+}
+
+input[type="submit"][value="carrinho"] {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+input[type="submit"][value="carrinho"]:hover {
+    background-color: #0056b3;
+}
+
+/* Botão de edição */
+.edit-link {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.edit-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .product-container {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    .product-container img {
+        width: 40%;
+        max-width: 300px;
+    }
+    .product-info {
+        flex-grow: 1;
+    }
+    form {
+        align-items: flex-start;
+    }
+}

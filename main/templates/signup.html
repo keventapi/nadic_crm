@@ -4,16 +4,19 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Cadastro</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+        <link rel="stylesheet" href="{% static "styles/signup-style.css" %}">
     </head>
     <body>
         
         <form method="POST">
             {% csrf_token %}
+            <h1>Cadastre-se</h1>
             {{form.as_p}}
-            <input type='submit' id='submit' value='submit'> 
+            <input type='submit' id='submit' value='Criar Conta'>
+            <a href="/login" style="margin-top: 15px; font-size: 0.9rem; color: var(--primary-color); text-decoration: none;">Já tem uma conta? Faça login</a>
         </form>
+        
     </body>
 </html>

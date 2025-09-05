@@ -8,14 +8,14 @@
         <meta name="description" content="">
         <meta name="csrf_token" content="{{ csrf_token }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static "styles/index_style.css" %}">
+        <link rel="stylesheet" href="{% static "styles/faturamento-style.css" %}">
     </head>
-    <body>
-        <div id="top_banner">
-            <div class="banner_item">
-                <a href="/" id="home">nadicCRM</a>
-            </div>
-            <div class="banner_separator"></div>
+   <body>
+    <div id="top_banner">
+        <div class="banner_item">
+            <a href="/" id="home">nadicCRM</a>
+        </div>
+        <div class="banner_group">
             <div class="banner_item">
                 <a href="{% url 'profile' user.id %}">
                     <img src="{% static 'imgs/profile.png' %}" alt="Perfil">
@@ -23,14 +23,23 @@
             </div>
             <div class="banner_item">
                 <a href="/cart">
-                <img src="{% static 'imgs/cart.png' %}">
+                    <img src="{% static 'imgs/cart.png' %}">
                 </a>
             </div>
         </div>
+    </div>
 
+    <div class="main_content">
+        <div class="info_card">
+            <p>Faturamento Atual da Empresa:</p>
+            <p><strong>{{ faturamento_empresa }} R$</strong></p>
+        </div>
 
-        <p>faturamento atual da emprese: {{faturamento_empresa}}R$</p<
-        <p>capital transicionado pelo sistema: {{faturamento_total}}R$</p<
-        <script src=" {% static "js/index_script.js" %}" async defer></script>
-    </body>
+        <div class="info_card">
+            <p>Capital Transacionado pelo Sistema:</p>
+            <p><strong>{{ faturamento_total }} R$</strong></p>
+        </div>
+    </div>
+    <script src="{% static "js/index_script.js" %}" async defer></script>
+</body>
 </html>
